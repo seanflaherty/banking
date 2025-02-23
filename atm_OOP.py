@@ -3,11 +3,11 @@
 
 class AtmMachine:
     def __init__ (self):
-        self.pin = ""
-        self.balance = 0
-        self.menu()
+        self.__pin = ""
+        self.__balance = 0
+        self.__menu()
 
-    def menu(self):
+    def __menu(self):
         user_input = input(
             """
             Hi how can i help you?
@@ -16,7 +16,7 @@ class AtmMachine:
             2. Press 2 to change pin
             3. Press 3 to check balence
             4. Press 4 to withdraw
-            5. AnythingAny other character to exit
+            5. Any other character to exit
             """
         )
     
@@ -40,51 +40,51 @@ class AtmMachine:
             exit()
     def create_pin(self):
         user_pin = input("Enter your pin: ")
-        self.pin = user_pin
+        self.__pin = user_pin
 
         user_balance = int(input("Enter Balance: "))
-        self.balance - user_balance
+        self.__balance - user_balance
 
         print("Pin created successfully")
-        self.menu()
+        self.__menu()
 
     def change_pin(self):
         old_pin = input("Enter your old pin: ")
         if old_pin == self.pin:
             new_pin = input("Enter your new pin: ")
-            self.pin = new_pin
+            self.__pin = new_pin
             print("Pin changed successfully!")
-            self.menu()
+            self.__menu()
         else:
             print("Invalid pin!")
-        self.menu()
+        self.__menu()
     
 
     def check_balance(self):
         user_pin = input("Enter your pin: ")
 
-        if user_pin == self.pin():
-            print(f"Your balance is: ${self.balance}")
+        if user_pin == self.__pin():
+            print(f"Your balance is: ${self.__balance}")
 
         else:
             print("Invalid pin!")
-        self.menu()
+        self.__menu()
 
     def withdraw_balance(self):
         user_pin = input("Enter your pin: ")
 
         if user_pin == self.pin():
             withdrawl_amount = int(input("Enter the the withdrawl amount: "))
-            if withdrawl_amount <= self.balance:
-                self.balance = self.balance - withdrawl_amount
-                print(f"You have withdrawn ${withdrawl_amount}. Your new balance is now: ${self.balance}")
-                self.menu()
+            if withdrawl_amount <= self.__balance:
+                self.__balance = self.__balance - withdrawl_amount
+                print(f"You have withdrawn ${withdrawl_amount}. Your new balance is now: ${self.__balance}")
+                self.__menu()
             else:
                 print(f"${withdrawl_amount} exceeds your balance!")
-                self.menu()
+                self.__menu()
         else:
             print("Invalid pin!")
-        self.menu()
+        self.__menu()
 
 
 obj = AtmMachine()      
