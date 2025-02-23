@@ -7,6 +7,25 @@ class AtmMachine:
         self.__balance = 0
         self.__menu()
 
+    # balance getter
+    def get_balance(self):
+        return self.__balance
+    # balance setter
+
+    def set_balance(self, new_balance):
+        if type(new_balance) == int:
+            self.__balance = new_balance
+        else:
+            print("Please enter a number.")
+    
+    # pin getter
+    def get_pin(self):
+        return self.__pin
+
+    # pin setter
+    def set_pin(self, new_pin):
+        self.__pin == new_pin
+        
     def __menu(self):
         user_input = input(
             """
