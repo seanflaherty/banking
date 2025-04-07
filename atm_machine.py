@@ -1,22 +1,19 @@
-# pascal case
-# HelloWorld
 
 class AtmMachine:
+    # static variable
+    __customer_id = 0
+
     def __init__ (self):
         self.__pin = ""
         self.__balance = 0
+        self.customer_id = AtmMachine.customer_id
+        AtmMachine.customer_id += 1
         self.__menu()
 
-    # balance getter
-    def get_balance(self):
-        return self.__balance
-    # balance setter
-
-    def set_balance(self, new_balance):
-        if type(new_balance) == int:
-            self.__balance = new_balance
-        else:
-            print("Please enter a number.")
+    # customer_id getter
+    @staticmethod
+    def get_customer_id():
+        return AtmMachine.__customer_id
     
     # pin getter
     def get_pin(self):
@@ -25,7 +22,20 @@ class AtmMachine:
     # pin setter
     def set_pin(self, new_pin):
         self.__pin == new_pin
-        
+
+    # balance getter
+    def get_balance(self):
+        return self.__balance
+    
+    # balance setter
+    def set_balance(self, new_balance):
+        if type(new_balance) == int:
+            self.__balance = new_balance
+        else:
+            print("Please enter a number.")
+    
+
+
     def __menu(self):
         user_input = input(
             """
@@ -105,5 +115,22 @@ class AtmMachine:
             print("Invalid pin!")
         self.__menu()
 
+class Customer:
+    def __init__(self, name, gender, address, ):
+        self.name = name
+        self.gender = gender
+        self.address = address
 
-obj = AtmMachine()      
+    def print_info(self):
+        print(f"Name: {self.name}, Gender: {self.gender}, Address: {self.address.city}, {self.address.state}, {self.address.zip_code}")
+
+class Address:
+    def __init__ (self, city, state, zip_code):
+        self.city = city
+        self.state = state
+        self.zip_code = zip_code
+
+adds = Address("Baltimore", "Maryland", "20112")
+cust = Customer("Dave", "Male", adds) 
+
+cust.print_info()
